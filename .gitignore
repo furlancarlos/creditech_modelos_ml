@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Ignorar arquivos extras de documentação da UCI
+data/Index
+data/german.doc
+data/german.data-numeric
+
+# Opcional: Se não quiser subir o PDF do enunciado
+reports/documentos/*.pdf
+
