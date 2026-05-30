@@ -26,10 +26,10 @@ def processar_e_salvar_datasets():
     # 1. Leitura do arquivo original
     df = pd.read_csv(caminho_original, sep=' ', header=None, names=colunas)
     
-    # 2. Ajuste do Target (0 = Bom, 1 = Mau Pagador) [cite: 14, 28]
+    # 2. Ajuste do Target (0 = Bom, 1 = Mau Pagador)
     df['target'] = df['target'].map({1: 0, 2: 1})
     
-    # 3. Normalização Min-Max das variáveis contínuas [cite: 19]
+    # 3. Normalização Min-Max das variáveis contínuas
     print("⚖️ Aplicando normalização Min-Max nas variáveis contínuas...")
     atributos_continuos = ["duracao_meses", "valor_credito", "idade"]
     scaler = MinMaxScaler()
@@ -42,7 +42,7 @@ def processar_e_salvar_datasets():
     print("\n🔄 Gerando as duas variantes do dataset...")
 
     # -------------------------------------------------------------------------
-    # VARIANTE 1: ONE-HOT ENCODING (Para KNN e Árvore de Decisão) [cite: 16]
+    # VARIANTE 1: ONE-HOT ENCODING (Para KNN e Árvore de Decisão)
     # -------------------------------------------------------------------------
     # pd.get_dummies converte textos em colunas binárias de 0 e 1
     X_onehot = pd.get_dummies(X, drop_first=True)
@@ -54,7 +54,7 @@ def processar_e_salvar_datasets():
     print(f"💾 Dataset para KNN e DT salvo em: {caminho_knn_dt} (Colunas: {df_knn_dt.shape[1]})")
 
     # -------------------------------------------------------------------------
-    # VARIANTE 2: ORDINAL ENCODING (Para GaussianNB) [cite: 16]
+    # VARIANTE 2: ORDINAL ENCODING (Para GaussianNB)
     # -------------------------------------------------------------------------
     X_ordinal = X.copy()
     # Identifica as colunas que contêm texto e converte em números sequenciais (0, 1, 2...)

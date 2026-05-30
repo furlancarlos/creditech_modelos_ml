@@ -225,3 +225,6 @@ data/german.data-numeric
 # Opcional: Se não quiser subir o PDF do enunciado
 reports/documentos/*.pdf
 
+# Ignorar arquivos de apoio (ex: scripts, dados, etc.)
+_apoio
+
